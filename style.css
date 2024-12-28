@@ -43,6 +43,7 @@ input{
 .input-group i{
     position:absolute;
     color:black;
+    bottom: 38px;
 }
 input:focus{
     background-color: transparent;
@@ -124,5 +125,8 @@ input:focus~label,input:not(:placeholder-shown)~label{
     font-size:1rem;
     opacity:0;
     animation:fadeOut 7s forwards;
+}
 
+.loader-icon {
+    display: none;
 }

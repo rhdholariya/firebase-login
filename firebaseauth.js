@@ -44,7 +44,8 @@ signUp.addEventListener('click', (event) => {
 
     const auth = getAuth();
     const db = getFirestore();
-
+    signUp.querySelector('.loader-icon').style.display = 'inline-block';
+    signUp.disabled = true;
     createUserWithEmailAndPassword(auth, email, password)
         .then(async (userCredential) => {
             const user = userCredential.user;
@@ -73,6 +74,8 @@ signUp.addEventListener('click', (event) => {
             } else {
                 showMessage('unable to create User', 'signUpMessage');
             }
+            signUp.querySelector('.loader-icon').style.display = 'none';
+            signUp.disabled = false;
         })
 });
 
@@ -82,7 +85,8 @@ signIn.addEventListener('click', (event) => {
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const auth = getAuth();
-
+    signIn.querySelector('.loader-icon').style.display = 'inline-block';
+    signIn.disabled = true;
     signInWithEmailAndPassword(auth, email, password)
         .then(async (userCredential) => {
             showMessage('login is successful', 'signInMessage');
@@ -99,5 +103,8 @@ signIn.addEventListener('click', (event) => {
             } else {
                 showMessage('Account does not Exist', 'signInMessage');
             }
-        })
+            signIn.querySelector('.loader-icon').style.display = 'none';
+            signIn.disabled = false;
+        });
+
 })
